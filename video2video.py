@@ -6,6 +6,7 @@ import argparse
 import cv2
 import numpy as np
 from PIL import Image, ImageFont, ImageDraw, ImageOps
+from utils import get_size
 
 
 def get_args():
@@ -57,7 +58,7 @@ def main(opt):
             cell_height = 12
             num_cols = int(width / cell_width)
             num_rows = int(height / cell_height)
-        char_width, char_height = font.getsize("A")
+        char_width, char_height = get_size(font, "A")
         out_width = char_width * num_cols
         out_height = 2 * char_height * num_rows
         out_image = Image.new("L", (out_width, out_height), bg_code)
